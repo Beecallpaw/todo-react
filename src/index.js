@@ -1,4 +1,6 @@
 import React from "react";
-import ReactDOM, { render } from "react-dom";
+import { render } from "react-dom";
 
-render(<h1>Hello</h1>, document.querySelector("#root"));
+import TodoApp from "./components/TodoApp";
+
+render(<TodoApp />, document.querySelector("#root"));
