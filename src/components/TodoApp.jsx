@@ -3,6 +3,7 @@ import React from "react";
 import TodoList from "./TodoList";
 import AddTodo from "./AddTodo";
 import SearchTodo from "./SearchTodo";
+const uid = require("uuid/v4");
 
 class TodoApp extends React.Component {
   state = {
@@ -10,21 +11,30 @@ class TodoApp extends React.Component {
     searchText: "",
     todos: [
       {
-        id: 1,
+        id: uid(),
         task: "Eat food"
       },
       {
-        id: 2,
+        id: uid(),
         task: "Read Something"
       },
       {
-        id: 3,
+        id: uid(),
         task: "Kill anything that moves"
       }
     ]
   };
-  handleAddTodo(item) {
-    console.log(`new todo: ${item}`);
+  handleAddTodo = item =>{
+    console.log(item);
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          id: uid(),
+          task: item
+        }
+      ]
+    });
   }
   handleSearch = (showCompleted, searchText) => {
     this.setState({
