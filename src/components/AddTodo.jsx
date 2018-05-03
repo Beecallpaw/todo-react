@@ -1,9 +1,6 @@
 import React from "react";
 
 class AddTodo extends React.Component {
-  state = {
-    value: ""
-  };
   handleSubmit = e => {
     var todoText = this.refs.todoText.value;
     if (todoText.length > 0) {

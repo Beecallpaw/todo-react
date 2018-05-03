@@ -1,41 +1,47 @@
 import React from "react";
 
+import uid from "uuid/v4";
+
 import TodoList from "./TodoList";
 import AddTodo from "./AddTodo";
 import SearchTodo from "./SearchTodo";
-const uid = require("uuid/v4");
-
+import ls from "../LocalStorage/LS";
 class TodoApp extends React.Component {
   state = {
     showCompleted: false,
     searchText: "",
-    todos: [
-      {
-        id: uid(),
-        task: "Eat food"
-      },
-      {
-        id: uid(),
-        task: "Read Something"
-      },
-      {
-        id: uid(),
-        task: "Kill anything that moves"
-      }
-    ]
+    todos: ls.getTodos()
   };
-  handleAddTodo = item =>{
-    console.log(item);
+
+  componentDidUpdate() {
+    ls.setTodos(this.state.todos);
+  }
+
+  handleAddTodo = item => {
     this.setState({
       todos: [
         ...this.state.todos,
         {
           id: uid(),
-          task: item
+          task: item,
+          completed: false
         }
       ]
     });
-  }
+  };
+  handleToggle = id => {
+    let updatedTodos = this.state.todos.map(todo => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      if (todo.completed) {
+      }
+      return todo;
+    });
+    this.setState({
+      todos: updatedTodos
+    });
+  };
   handleSearch = (showCompleted, searchText) => {
     this.setState({
       showCompleted,
@@ -46,7 +52,7 @@ class TodoApp extends React.Component {
     return (
       <div style={{ textAlign: "center" }}>
         <SearchTodo onSearch={this.handleSearch} />
-        <TodoList todos={this.state.todos} />
+        <TodoList onToggle={this.handleToggle} todos={this.state.todos} />
         <AddTodo onAddTodo={this.handleAddTodo} />
       </div>
     );

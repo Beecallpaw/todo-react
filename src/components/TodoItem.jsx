@@ -1,13 +1,14 @@
 import React from "react";
 
-const TodoItem = ({ id, task }) => {
+const TodoItem = ({ id, task, completed, onToggle }) => {
   return (
-    <div>
-      <ul style={{ listStyleType: "none" }}>
-        <li>
-          {id}.{task}
-        </li>
-      </ul>
+    <div
+      onClick={() => {
+        onToggle(id);
+      }}
+    >
+      <input type="checkbox" checked={completed} onChange={() => {}} />
+      {task}
     </div>
   );
 };
