@@ -1,5 +1,4 @@
 import React from "react";
-
 import uid from "uuid/v4";
 
 import TodoList from "./TodoList";
@@ -8,6 +7,7 @@ import SearchTodo from "./SearchTodo";
 import ls from "../Helpers/localStorage";
 import searchHelper from "../Helpers/searchHelper";
 
+let moment = require("moment");
 class TodoApp extends React.Component {
   state = {
     showCompleted: false,
@@ -26,7 +26,9 @@ class TodoApp extends React.Component {
         {
           id: uid(),
           task: item,
-          completed: false
+          completed: false,
+          createdAt: moment().calendar(),
+          completedAt: undefined
         }
       ]
     });
@@ -35,6 +37,8 @@ class TodoApp extends React.Component {
     let updatedTodos = this.state.todos.map(todo => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
+        let fn = moment().calendar();
+        todo.completedAt = todo.completed ? fn : undefined;
       }
       if (todo.completed) {
       }
