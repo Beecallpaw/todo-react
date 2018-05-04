@@ -5,7 +5,9 @@ import uid from "uuid/v4";
 import TodoList from "./TodoList";
 import AddTodo from "./AddTodo";
 import SearchTodo from "./SearchTodo";
-import ls from "../LocalStorage/LS";
+import ls from "../Helpers/localStorage";
+import searchHelper from "../Helpers/searchHelper";
+
 class TodoApp extends React.Component {
   state = {
     showCompleted: false,
@@ -49,10 +51,16 @@ class TodoApp extends React.Component {
     });
   };
   render() {
+    let { todos, showCompleted, searchText } = this.state;
+    let filteredTodos = searchHelper.filterTodos(
+      todos,
+      showCompleted,
+      searchText
+    );
     return (
       <div style={{ textAlign: "center" }}>
         <SearchTodo onSearch={this.handleSearch} />
-        <TodoList onToggle={this.handleToggle} todos={this.state.todos} />
+        <TodoList onToggle={this.handleToggle} todos={filteredTodos} />
         <AddTodo onAddTodo={this.handleAddTodo} />
       </div>
     );
