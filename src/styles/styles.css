@@ -1,0 +1,21 @@
+#main {
+  margin: auto 33%;
+  border: 2px solid mediumorchid;
+  padding: 20px;
+  text-align: left;
+  font-size: 1.1rem;
+}
+#header {
+  text-align: center;
+}
+
+#button {
+  background-color: rgb(32, 235, 241);
+  width: 120px;
+  border: solid 2px lightslategrey;
+  border-radius: 5%;
+}
+#todos {
+  padding: 10px;
+  border-bottom: 2px dashed lightslategrey;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/styles.css";
 
 class SearchTodo extends React.Component {
   handleSearch = () => {
