@@ -1,21 +1,23 @@
 #main {
-  margin: auto 33%;
-  border: 2px solid mediumorchid;
-  padding: 20px;
+  margin-left: 30%;
+  margin-right: 48%;
+  margin-top: 5%;
+  padding: 35px;
   text-align: left;
   font-size: 1.1rem;
+  background-color: bisque;
 }
-#header {
-  text-align: center;
-}
-
 #button {
   background-color: rgb(32, 235, 241);
   width: 120px;
-  border: solid 2px lightslategrey;
-  border-radius: 5%;
+  height: 30px;
+  margin-top: 10px;
+  border: none;
 }
 #todos {
   padding: 10px;
-  border-bottom: 2px dashed lightslategrey;
+}
+input {
+  padding: 8px;
+  margin: 10px;
 }
