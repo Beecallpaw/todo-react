@@ -2,4 +2,4 @@
 Clone the repo
 ## run yarn from root directory
 ### yarn start 
-### Enjoy
+### Enjoy the app
